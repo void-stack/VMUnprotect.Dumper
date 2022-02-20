@@ -2,7 +2,7 @@
   <img width="256" heigth="256" src="docs\vmup.png">
 <h1 align="center">VMUnprotect.Dumper</h1>
 <p align="center">
-  <strong>VMUnprotect.Dumper</strong> is a project engaged in hunting tampered <a href="https://vmpsoft.com">VMProtect</a> assemblies. It makes use of <a href="https://github.com/pardeike/Harmony">AsmResolver</a> to dynamically untamper <strong>VMP</strong> protected assembly. Works on <a href="https://vmpsoft.com/20210919/vmprotect-3-5-1/">VMProtect 3.5.1</a> (Latest) and few versions back.
+  <strong>VMUnprotect.Dumper</strong> is a project engaged in hunting tampered <strong>VMProtect assemblies</strong>. It makes use of <a href="https://github.com/pardeike/Harmony">AsmResolver</a> to dynamically untamper <strong>VMP</strong> protected assembly. Works on <a href="https://vmpsoft.com/20210919/vmprotect-3-5-1/">VMProtect 3.5.1</a> (Latest) and few versions back.
 </p>
 </p>
 <p align="center">
@@ -12,18 +12,18 @@
 </p>
 
 </br></br>
-# Before and after usage of VMUnprotect.Dumper
-<img src="docs/protected.png" width="49%" height="390px" style="display:inline;">
-<div style="display:inline;width:5px;"></div>
-<img src="docs/decrypted.png" width="49%" height="390px" style="display:inline;">
+# Before usage of VMUnprotect.Dumper
+<img src="docs/protected.png" >
 
+</br></br>
+
+# After usage of VMUnprotect.Dumper
+<img src="docs/decrypted.png" >
 
 # Usage
 ```sh
 VMUnprotect.Dumper.exe example.vmp.exe
 ```
-
-
 
 # Credits
 * [wwh1004](https://github.com/wwh1004) - Idea.
