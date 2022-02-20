@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>10</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AsmResolver" Version="4.8.0" />
+      <PackageReference Include="AsmResolver.DotNet" Version="4.8.0" />
+      <PackageReference Include="AsmResolver.PE" Version="4.8.0" />
+    </ItemGroup>
+
+</Project>
