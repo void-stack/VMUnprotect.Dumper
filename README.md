@@ -32,6 +32,6 @@ VMUnprotect.Dumper.exe example.vmp.exe
 This tool uses the following (open source) software:
 * [AsmResolver](https://github.com/Washi1337/AsmResolver) by [Washi](https://github.com/Washi1337), licensed under the MIT license, for reading/writing assemblies.
 
-- 💵 Want to buy me a Coffee?
+## 💵 Want to buy me a Coffee?
      - Donate BTC at `bc1q048wrqztka5x2syt9mtj68uuf73vqry60s38vf`
      - Donate ETH at `0x86b2C17C94A1E6f35d498d17a37dc1f8A715139b`
