@@ -24,6 +24,8 @@
 ```sh
 VMUnprotect.Dumper.exe example.vmp.exe
 ```
+### Checkout also:
+* [VMUnprotect](https://github.com/void-stack/VMUnprotect) - VMUnprotect can dynamically log and manipulate calls from virtualized methods by VMProtect.
 
 # Credits
 * [wwh1004](https://github.com/wwh1004) - Idea.
