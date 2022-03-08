@@ -24,6 +24,8 @@
 ```sh
 VMUnprotect.Dumper.exe example.vmp.exe
 ```
+> If the target app has a different framework, it probably won't work. Compile it yourself for your needs. <br>
+
 ### Checkout also:
 * [VMUnprotect](https://github.com/void-stack/VMUnprotect) - VMUnprotect can dynamically log and manipulate calls from virtualized methods by VMProtect.
 
