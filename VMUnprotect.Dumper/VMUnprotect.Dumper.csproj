@@ -12,6 +12,7 @@
       <PackageReference Include="AsmResolver" Version="4.8.0" />
       <PackageReference Include="AsmResolver.DotNet" Version="4.8.0" />
       <PackageReference Include="AsmResolver.PE" Version="4.8.0" />
+      <PackageReference Include="Sharprompt" Version="2.4.4" />
     </ItemGroup>
 
 </Project>
