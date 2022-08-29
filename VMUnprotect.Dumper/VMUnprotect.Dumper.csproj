@@ -6,7 +6,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
+        <ApplicationIcon>vmup.ico</ApplicationIcon>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="vmup.ico" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="AsmResolver" Version="4.8.0" />
