@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using AsmResolver.DotNet;
@@ -33,6 +31,8 @@ else
 if (File.Exists(target))
 {
     var output = $"{Path.GetFileNameWithoutExtension(target)}-decrypted.exe";
+
+    // Try to load assembly and gather the ManifestModule
     Assembly? assembly = null;
 
     try
@@ -42,30 +42,42 @@ if (File.Exists(target))
     catch (BadImageFormatException)
     {
         Console.WriteLine("Target app probably has a different framework.");
+        return;
     }
 
     var manifestModule = assembly.ManifestModule;
 
+    // Quick load for .cctor search
     var module = ModuleDefinition.FromFile(target);
 
+    // Resolve MethodBase of .cctor where vmp initializes itself
     var cctor =
         assembly.ManifestModule.ResolveMethod(module.TopLevelTypes[0].GetStaticConstructor()!.MetadataToken.ToInt32());
 
+    // Get Module Base Address from loaded assembly
     var hInstance = Marshal.GetHINSTANCE(manifestModule);
 
-    if (cctor != null)
+    // Make sure static constructor exists
+    if (cctor is not null)
     {
+        // Force VMProtect to fix methods
         RuntimeHelpers.PrepareMethod(cctor.MethodHandle);
 
+        // Load PEFile from disk
         var diskImage = PEFile.FromFile(target);
 
+        // Get correct AddressOfEntrypoint and fix determining whether the image is a PE32 (32-bit) or a PE32+ (64-bit) image.
         var epFromDisk = diskImage.OptionalHeader.AddressOfEntrypoint;
+        var magicDisk = diskImage.OptionalHeader.Magic;
+
+        // Load decrypted PEFile from module base
         var runtimeImage = PEFile.FromModuleBaseAddress(hInstance, PEMappingMode.Mapped);
+
         var optionalHeader = runtimeImage.OptionalHeader;
+        optionalHeader.Magic = magicDisk; // Fix the incorrect magic
+        optionalHeader.AddressOfEntrypoint = epFromDisk; // Fix the incorrect AddressOfEntrypoint
 
-        optionalHeader.Magic = diskImage.OptionalHeader.Magic;
-        optionalHeader.AddressOfEntrypoint = epFromDisk;
-
+        // Write fixed runtimeImage to disk
         using (var fs = File.Create(output))
         {
             runtimeImage.Write(new BinaryStreamWriter(fs));
